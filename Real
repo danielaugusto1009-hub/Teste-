@@ -1,6 +1,45 @@
 
+-- 🔹 FPS Boost automático
+do
+    local l_game = game
+    local l_Workspace = l_game.Workspace
+    local _ = l_game.Lighting
+    local _ = l_Workspace.Terrain
 
---DEOBFUSCATED BY _NYZLINH
+    -- Força qualidade mínima
+    settings().Rendering.QualityLevel = Enum.QualityLevel.Level01
+
+    -- Loop em todos os objetos para otimizar
+    for _, obj in pairs(l_game:GetDescendants()) do
+        if not obj:IsA("Part") and not obj:IsA("Union") and not obj:IsA("CornerWedgePart") and not obj:IsA("TrussPart") then
+            if obj:IsA("Decal") or obj:IsA("Texture") then
+                obj.Transparency = 1
+            elseif obj:IsA("ParticleEmitter") or obj:IsA("Trail") then
+                obj.Lifetime = NumberRange.new(0)
+            elseif obj:IsA("Explosion") then
+                obj.BlastPressure = 1
+                obj.BlastRadius = 1
+            elseif obj:IsA("Fire") or obj:IsA("SpotLight") or obj:IsA("Smoke") then
+                obj.Enabled = false
+            end
+        else
+            obj.Material = Enum.Material.Plastic
+            obj.Reflectance = 0
+        end
+    end
+end
+
+-- Notificaçao 
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Nebunly Hub",
+    Text = "✅️ Nebunly Carregado ✅️",
+    Duration = 5
+})
+
+-- Fast Attack
+loadstring(game:HttpGet("https://pastebin.com/raw/W7fbjKEp"))()
+
+-- Script Inteiro
 local L_1_ = {}
 L_1_[2] = table["concat"]
 do
@@ -13024,24 +13063,26 @@ spawn(function()
 	end
 end)
 L_1_[93]["Raids"]:AddToggle({
-	["Name"] = "Auto Teleport To Lab",
-	["Default"] = false,
-	["Callback"] = function(L_1509_arg0)
-		local L_1510_ = {}
-		L_1510_[1] = L_1509_arg0
-		_G["TpLab"] = L_1510_[1]
-		StopTween(_G["TpLab"])
-		while _G["TpLab"] do
-			wait()
-			if _G["TpLab"] then
-				if World2 and _G["TpLab"] then
-					topos(CFrame["new"](-6438.73535, 250.645355, -4501.50684))
-				elseif World3 and _G["TpLab"] then
-					topos(CFrame["new"](-5017.40869, 314.844055, -2823.0127, -0.925743818, 4.48217499e-08, -0.378151238, 4.55503146e-09, 1, 1.07377559e-07, .378151238, 9.7681621e-08, -0.925743818))
-				end
-			end
-		end
-	end
+    Name = "Auto Teleport To Lab",
+    Default = false,
+    Callback = function(enabled)
+        _G.TpLab = enabled
+        StopTween() -- ajuste conforme a função esperada
+
+        while _G.TpLab do
+            wait()
+            if World2 then
+                topos(CFrame.new(-6438.73535, 250.645355, -4501.50684))
+            elseif World3 then
+                topos(CFrame.new(
+                    -5017.40869, 314.844055, -2823.0127,
+                    -0.925743818, 4.48217499e-08, -0.378151238,
+                    4.55503146e-09, 1, 1.07377559e-07,
+                    0.378151238, 9.7681621e-08, -0.925743818
+                ))
+            end
+        end
+    end
 })
 L_1_[93]["Raids"]:AddSection({
 	L_1_[2]({
