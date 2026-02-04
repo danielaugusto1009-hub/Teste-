@@ -32,7 +32,7 @@ end
 -- Notificaçao 
 game.StarterGui:SetCore("SendNotification", {
     Title = "Nebunly Hub",
-    Text = "✅️ Nebunly Carregado ✅️",
+    Text = "✅️ Nebunly Carregado 2 ✅️",
     Duration = 5
 })
 
@@ -13063,118 +13063,33 @@ spawn(function()
 	end
 end)
 L_1_[93]["Raids"]:AddToggle({
-    Name = "Auto Teleport To Lab",
-    Default = false,
-    Callback = function(enabled)
-        _G.TpLab = enabled
-        StopTween() -- ajuste conforme a função esperada
+	["Name"] = "Auto Teleport To Lab",
+	["Default"] = false,
+	["Callback"] = function(L_1509_arg0)
+		local L_1510_ = {}
+		L_1510_[1] = L_1509_arg0
+		_G["TpLab"] = L_1510_[1]
+		StopTween() -- não faz sentido passar boolean aqui
 
-        while _G.TpLab do
-            wait()
-            if World2 then
-                topos(CFrame.new(-6438.73535, 250.645355, -4501.50684))
-            elseif World3 then
-                topos(CFrame.new(
-                    -5017.40869, 314.844055, -2823.0127,
-                    -0.925743818, 4.48217499e-08, -0.378151238,
-                    4.55503146e-09, 1, 1.07377559e-07,
-                    0.378151238, 9.7681621e-08, -0.925743818
-                ))
-            end
-        end
-    end
-})
-L_1_[93]["Raids"]:AddSection({
-	L_1_[2]({
-		"Items Law/Order Swor",
-		"d"
-	})
-})
-L_1_[93]["Raids"]:AddButton({
-	["Name"] = "Buy Microchip Law",
-	["Description"] = "";
-	["Callback"] = function()
-		L_1_[55]["Remotes"]["CommF_"]:InvokeServer("BlackbeardReward", "Microchip", "2")
-	end
-})
-L_1_[93]["Raids"]:AddButton({
-	["Name"] = "Start Law Raids",
-	["Description"] = "",
-	["Callback"] = function()
-		fireclickdetector(workspace["Map"]["CircleIsland"]["RaidSummon"]["Button"]["Main"]["ClickDetector"])
-	end
-})
-L_1_[93]["Raids"]:AddToggle({
-	["Name"] = L_1_[2]({
-		"Auto Buy Microchip L";
-		"aw"
-	});
-	["Description"] = "";
-	["Default"] = false,
-	["Callback"] = function(L_1511_arg0)
-		local L_1512_ = {}
-		L_1512_[1] = L_1511_arg0;
-		(getgenv())["AutoBuyMicrochipLaw"] = L_1512_[1]
-	end
-})
-spawn(function()
-	while task["wait"](1) do
-		if (getgenv())["AutoBuyMicrochipLaw"] then
-			pcall(function()
-				(game:GetService("ReplicatedStorage"))["Remotes"]["CommF_"]:InvokeServer("BlackbeardReward", "Microchip", "2")
-			end)
-		end
-	end
-end)
-L_1_[93]["Raids"]:AddToggle({
-	["Name"] = "Auto Start Law Raids",
-	["Description"] = "";
-	["Default"] = false;
-	["Callback"] = function(L_1513_arg0)
-		local L_1514_ = {}
-		L_1514_[2] = L_1513_arg0;
-		(getgenv())["AutoStartLawRaids"] = L_1514_[2]
-	end
-})
-spawn(function()
-	while task["wait"](1) do
-		if (getgenv())["AutoStartLawRaids"] then
-			pcall(function()
-				fireclickdetector(workspace["Map"]["CircleIsland"]["RaidSummon"]["Button"]["Main"]["ClickDetector"])
-			end)
-		end
-	end
-end)
-L_1_[93]["Raids"]:AddToggle({
-	["Name"] = "Auto Kill Law";
-	["Description"] = "",
-	["Default"] = false,
-	["Callback"] = function(L_1515_arg0)
-		local L_1516_ = {}
-		L_1516_[1] = L_1515_arg0
-		_G["AutoLawKak"] = L_1516_[1]
-	end
-})
-spawn(function()
-	while wait(Sec) do
-		if _G["AutoLawKak"] then
-			pcall(function()
-				local L_1517_ = {}
-				L_1517_[1] = GetConnectionEnemies("Order")
-				if L_1517_[1] then
-					repeat
-						task["wait"]()
-						L_1_[4]["Kill"](L_1517_[1], _G["AutoLawKak"])
-					until _G["AutoLawKak"] == false or not L_1517_[1]["Parent"] or L_1517_[1]["Humanoid"]["Health"] <= 0
-				else
-					_tp(CFrame["new"](-6217.2021484375, 28.047645568848, -5053.1357421875))
+		while _G["TpLab"] do
+			wait()
+			if _G["TpLab"] then
+				if World2 and _G["TpLab"] then
+					topos(CFrame.new(-6438.73535, 250.645355, -4501.50684))
+				elseif World3 and _G["TpLab"] then
+					topos(CFrame.new(
+						-5017.40869, 314.844055, -2823.0127,
+						-0.925743818, 4.48217499e-08, -0.378151238,
+						4.55503146e-09, 1, 1.07377559e-07,
+						0.378151238, 9.7681621e-08, -0.925743818
+					))
 				end
-			end)
+			end
 		end
 	end
-end)
+})
 L_1_[93]["Raids"]:AddSection({
-	"Raids Dungeons"
+	"Dungeons Raid [ NEW!]"
 })
 L_1_[42] = game["Players"]["LocalPlayer"]
 L_1_[83] = function()
@@ -13398,6 +13313,96 @@ task["spawn"](function()
 		end
 	end
 end)
+L_1_[93]["Raids"]:AddSection({
+	L_1_[2]({
+		"Items Law/Order Swor",
+		"d"
+	})
+})
+L_1_[93]["Raids"]:AddButton({
+	["Name"] = "Buy Microchip Law",
+	["Description"] = "";
+	["Callback"] = function()
+		L_1_[55]["Remotes"]["CommF_"]:InvokeServer("BlackbeardReward", "Microchip", "2")
+	end
+})
+L_1_[93]["Raids"]:AddButton({
+	["Name"] = "Start Law Raids",
+	["Description"] = "",
+	["Callback"] = function()
+		fireclickdetector(workspace["Map"]["CircleIsland"]["RaidSummon"]["Button"]["Main"]["ClickDetector"])
+	end
+})
+L_1_[93]["Raids"]:AddToggle({
+	["Name"] = L_1_[2]({
+		"Auto Buy Microchip L";
+		"aw"
+	});
+	["Description"] = "";
+	["Default"] = false,
+	["Callback"] = function(L_1511_arg0)
+		local L_1512_ = {}
+		L_1512_[1] = L_1511_arg0;
+		(getgenv())["AutoBuyMicrochipLaw"] = L_1512_[1]
+	end
+})
+spawn(function()
+	while task["wait"](1) do
+		if (getgenv())["AutoBuyMicrochipLaw"] then
+			pcall(function()
+				(game:GetService("ReplicatedStorage"))["Remotes"]["CommF_"]:InvokeServer("BlackbeardReward", "Microchip", "2")
+			end)
+		end
+	end
+end)
+L_1_[93]["Raids"]:AddToggle({
+	["Name"] = "Auto Start Law Raids",
+	["Description"] = "";
+	["Default"] = false;
+	["Callback"] = function(L_1513_arg0)
+		local L_1514_ = {}
+		L_1514_[2] = L_1513_arg0;
+		(getgenv())["AutoStartLawRaids"] = L_1514_[2]
+	end
+})
+spawn(function()
+	while task["wait"](1) do
+		if (getgenv())["AutoStartLawRaids"] then
+			pcall(function()
+				fireclickdetector(workspace["Map"]["CircleIsland"]["RaidSummon"]["Button"]["Main"]["ClickDetector"])
+			end)
+		end
+	end
+end)
+L_1_[93]["Raids"]:AddToggle({
+	["Name"] = "Auto Kill Law";
+	["Description"] = "",
+	["Default"] = false,
+	["Callback"] = function(L_1515_arg0)
+		local L_1516_ = {}
+		L_1516_[1] = L_1515_arg0
+		_G["AutoLawKak"] = L_1516_[1]
+	end
+})
+spawn(function()
+	while wait(Sec) do
+		if _G["AutoLawKak"] then
+			pcall(function()
+				local L_1517_ = {}
+				L_1517_[1] = GetConnectionEnemies("Order")
+				if L_1517_[1] then
+					repeat
+						task["wait"]()
+						L_1_[4]["Kill"](L_1517_[1], _G["AutoLawKak"])
+					until _G["AutoLawKak"] == false or not L_1517_[1]["Parent"] or L_1517_[1]["Humanoid"]["Health"] <= 0
+				else
+					_tp(CFrame["new"](-6217.2021484375, 28.047645568848, -5053.1357421875))
+				end
+			end)
+		end
+	end
+end)
+
 L_1_[93]["Combat"]:AddSection({
 	"Combat / AimBot"
 })
